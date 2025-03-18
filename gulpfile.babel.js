@@ -73,5 +73,11 @@ task("startServer", () => {
 
 const buildSite = series("buildJekyll", "processStyles");
 
-exports.serve = series(buildSite, "startServer");
-exports.default = series(buildSite);
+const buildSiteServe = series(buildSite, "startServer");
+const buildSiteDefault = series(buildSite);
+
+// exports.serve = series(buildSite, "startServer");
+// exports.default = series(buildSite);
+
+export { buildSiteServe as serve };
+export { buildSiteDefault as default };
